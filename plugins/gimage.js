@@ -6,7 +6,7 @@ let fetch = require('node-fetch')
 let handler = async(m, { conn, text, command, usedPrefix }) => {
   if (!text) throw `Usage:\n${usedPrefix + command} <text>\n\nExample:\n${usedPrefix + command} banana`
   let results = await gis(text) || []
-  let { url, width, height } = conn.pickRandom(results) || {}
+  let { url, width, height } = pickRandom(results) || {}
   if (!url) throw '404 Not Found'
   conn.sendFile(m.chat, url, 'gimage', '', m, 0, { thumbnail: await (await fetch(url)).buffer() })
 }
