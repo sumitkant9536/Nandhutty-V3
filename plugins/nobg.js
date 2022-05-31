@@ -7,9 +7,9 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     let img = await q.download();
     let imgbase64 = img.toString("base64");
     let data = await axios.post(
-      "https://salisganteng.pythonanywhere.com/api/remove-bg",
+      "https://api.remove.bg/v1.0/removebg",
       {
-        "api-key": "salisheker",
+        "api-key": "q3wc1mvJL4bCHCjSwbZDvJ21",
         image: imgbase64,
       }
     );
