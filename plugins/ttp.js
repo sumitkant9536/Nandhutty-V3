@@ -4,7 +4,7 @@ const fetch = require('node-fetch')
 let handler = async (m, { conn, text, command }) => {
   let teks = text ? text : m.quoted && m.quoted.text ? m.quoted.text : m.text
   if (/^ttp1?$/i.test(command)) {
-    let stiker = await sticker5(null, API('xteam', '/ttp', { file: '', text: teks }), packname, author)
+    let stiker = await sticker(null, API('xteam', '/ttp', { file: '', text: teks }), packname, author)
     if (stiker) return await conn.sendFile(m.chat, stiker, '', '', m)
     throw stiker.toString()
   }
@@ -13,11 +13,11 @@ let handler = async (m, { conn, text, command }) => {
     if (!url.ok) throw eror
     res = await url.json()
     stick = res.image
-    let stiker = await sticker5(null, stick, packname, author)
+    let stiker = await sticker(null, stick, packname, author)
     conn.sendFile(m.chat, stiker, '', '', m)
   }
   if (/3$/i.test(command)) {
-    let stiker = await sticker5(null, API('hardianto', '/api/maker/ttp', { text: teks }, 'apikey'), packname, author)
+    let stiker = await sticker(null, API('hardianto', '/api/maker/ttp', { text: teks }, 'apikey'), packname, author)
     if (stiker) return await conn.sendFile(m.chat, stiker, '', '', m)
     throw stiker.toString()
   }
@@ -26,7 +26,7 @@ let handler = async (m, { conn, text, command }) => {
     if (!url.ok) throw eror
     res = await url.json()
     stick = res.image
-    let stiker = await sticker5(null, stick, packname, author)
+    let stiker = await sticker(null, stick, packname, author)
     if (stiker) return await conn.sendFile(m.chat, stiker, '', '', m)
     throw stiker.toString()
   }
