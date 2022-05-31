@@ -178,7 +178,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
           "title": `      🔮 ɴᴀɴᴅʜᴜᴛᴛʏ ᴠ3 🔮\n\╭─❑\n\│✅ Version: v3 \n\│✅ Library: Baileys\n\│✅ Runtime: ${uptime} \n\╰❑\n\╭─⭐ 「 INFO USER 」\n\│ 👤 Name: ${name} \n\│ 🔍 Total Features : 100+\n\│ ⚠️ Limit: ${limit} \n\│ 🗓️ Date: ${date} \n\│ 🔰 Exp: ${exp} \n\│ 💎 Level: ${level} \n\│ 🔮 Role: ${role} \n\│ 📟 Storage: 106/128 Gb \n\╰⭐\n\╭─ ❑「 INFORMATION 」❑──\n\│ This bot is still in testing stage\n\│ if there is a bug \ error please\n\│ report it to the owner\n\│\n\╰❑`.trim(),
           "description": "ᴅᴏɴᴛ sᴘᴀᴍ",
           "buttonText": "Click Here",
-          "footerText": "ᴅᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ ᴀᴊᴍᴀʟ-ᴀᴄʜᴜ",
+          "footerText": "ᴅᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ SIRIUS",
           "listType": "SINGLE_SELECT",
           "sections": [
             {
