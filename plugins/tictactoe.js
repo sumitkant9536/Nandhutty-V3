@@ -39,7 +39,7 @@ Waiting @${room.game.currentTurn.split('@')[0]}
 Type *giveup* to give up
 `.trim()
             if (room.x !== room.o) await conn.sendButton(room.x, str, 'ɴᴀɴᴅʜᴜᴛᴛʏ ᴠ3', 'Give up', '.giveup', m)
-            await conn.sendButton(room.o, str, 'ɴᴀɴᴅʜᴜᴛᴛʏ ᴠ3', 'Give up', '.giveup', m)
+            await conn.sendButton(room.o, str, 'ꜱɪʀɪᴜꜱ', 'Give up', '.giveup', m)
         } else {
             room = {
                 id: 'tictactoe-' + (+new Date),
