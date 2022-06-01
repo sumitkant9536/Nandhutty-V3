@@ -1,8 +1,8 @@
 let handler = async (m, { conn }) => {
-    conn.sendFile(m.chat, global.API('amel', '/darkjokes', {}, 'apikey'), '', '', m, 0, { thumbnail: Buffer.alloc(0) })
+    conn.sendFile(m.chat, global.API('xteam', '/asupan/darkjoke', {}, 'APIKEY'), '', 'drag joles', m)
 }
-handler.help = ['darkjoke']
+handler.help = ['darkjokes']
 handler.tags = ['internet']
-handler.command = /^((drag|dark)joke)$/i
+handler.command = /^(dragjokes|darkjokes)$/i
 
 module.exports = handler
