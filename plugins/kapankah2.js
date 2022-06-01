@@ -1,16 +1,17 @@
-let handler = async (m, { conn, command, text }) => {
+let handler = async (m, { conn, text }) => {
   conn.reply(m.chat, `
-*Pertanyaan:* ${command} ${text}
-*Jawaban:* ${Math.floor(Math.random() * 10)} ${pickRandom(['second', 'minute', 'hour', 'day', 'week', 'month', 'year', 'decade', 'century'])} again ...
+*Question:* ${m.text}
+*Answer:* ${Math.floor(Math.random() * 10)} ${pickRandom(['second', 'minute', 'hour', 'day', 'week', 'month', 'year', 'decade', 'century'])} again ...
 `.trim(), m, m.mentionedJid ? {
   contextInfo: {
     mentionedJid: m.mentionedJid
   }
 } : {})
 }
-handler.help = ['', 'kah'].map(v => 'kapan' + v + ' <pertanyaan>')
+handler.help = ['', 'kah'].map(v => 'kapan' + v + ' <text>?')
 handler.tags = ['shell']
-handler.command = /^kapan(kah)?$/i
+handler.customPrefix = /(\?$)/
+handler.command = /^(when)?$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
