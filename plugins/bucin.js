@@ -1,9 +1,19 @@
-let handler = async (m, { conn, usedPrefix }) => {
-  await conn.sendButton(m.chat, pickRandom(global.bucin), '© wabot-aq', 'Bucin', `${usedPrefix}bucin`, m)
+let handler = async (m, { conn, usedPrefix, command }) => {
+  await conn.sendButton(m.chat, `“${pickRandom(global.bucin)}”`, watermark, 'Quotes', `${usedPrefix + command}`)
 }
-handler.help = ['bucin']
+handler.help = ['quotes']
 handler.tags = ['quotes']
-handler.command = /^(bucin)$/i
+handler.command = /^(quotes)$/i
+handler.owner = false
+handler.mods = false
+handler.premium = false
+handler.group = false
+handler.private = false
+
+handler.admin = false
+handler.botAdmin = false
+
+handler.fail = null
 
 module.exports = handler
 
@@ -11,93 +21,123 @@ function pickRandom(list) {
   return list[Math.floor(list.length * Math.random())]
 }
 
-// https://jalantikus.com/tips/kata-kata-bucin/
 global.bucin = [
-  "It's not wrong if I expect more from someone who is more certain without breaking promises",
-    "If I really don't love you, why am I thinking about you. But all of you think I don't love you",
-    "Don't be jealous and sad if you don't have the ability that other people have. Rest assured that other people also don't have the ability like you",
-    "Only you can make my steps stop, while saying in my heart how can I leave you",
-    "Keep smiling even though I'm still made to wait and miss you, but that's for you",
-    "It's not that easy to forget you"
-    "You are indifferent to me, I still love you because you have accepted me as I am",
-    "I am very happy if you are happy near me, not near him",
-    "Be yourself, don't follow others, but can't live it"
-    "Try to pause for a moment to think about how we can solve this problem together",
-    "Can we not be enemies after parting, I want us to be like we used to be before we started having fun together, joking and others",
-    "I want you to be with me forever and I hope you can be my soul mate",
-    "Love can't be explained in words, because love can only be felt by the heart."
-    "The biggest problem in a person is not being able to fight his fear"
-    "Good morning to people I love and people who hate me, I hope today is a better day than yesterday for me and you",
-    "Don't give up with your current situation, be optimistic because it is optimism that makes us strong",
-    "To the man who is always in my prayers I love you sincerely as it is",
-    "Please don't go when I really love you"
-    "Try to be in my position, then you just leave it like that with the person you really love",
-    "I'm afraid you're okay, I panic if you're sick, it's because I love and care for you",
-   "Love can't be explained in words, because love can only be felt by the heart."
-    "The biggest problem in a person is not being able to fight his fear"
-    "Good morning to people I love and people who hate me, I hope today is a better day than yesterday for me and you",
-    "Don't give up with your current situation, be optimistic because it is optimism that makes us strong",
-    "To the man who is always in my prayers I love you sincerely as it is",
-    "Please don't go when I really love you"
-    "Try to be in my position, then you just leave it like that with the person you really love",
-    "I'm afraid you're okay, I panic if you're sick, it's because I love and care for you",
-    "It hurts when the love I give you don't appreciate",
-    "You suddenly changed for no reason but if there is a reason you changed please tell me so I can fix the error",
-    "Because of you I know true love"
-    "Your sweet smile is very beautiful, so don't be sad"
-    "Starting from acquaintances, joking together, ridicule then turned into like, comfortable and finally love and care for each other",
-    "Smile at the person who has hurt you so that you will know the meaning of extraordinary patience"
-    "I will remember the bitter memories and I will make a lesson for a sweet future",
-    "If you really can't keep your promise, at least you remember and try not to let your promise until you forget it",
-    "You can only be silent and think, why are loyal and good people left behind, the naughty ones are chased, they are left behind, they say that all men are the same",
-    "Even though it's only for a moment you make me happy, but the feeling of happiness that he doesn't quickly forget."
-    "I didn't expect you to go and forget me so quickly",
-    "Singles don't have to stay at home on weekends, go out, singles can be free to be close to anyone, girlfriend, ex-friend, even alone or with the devil,"
-    "You are a friend who is always by my side in happy and difficult circumstances. Thank you for always being by my side",
-    "I don't really know in your heart it's me or him",
-    "It's not easy to forget you because I love you so much even though you have hurt me many times",
-    "Life is short so just let go of those who hurt you Love those who care about you and their struggles that mean a lot to you"
-    "Please don't leave me, I still really love and care for you",
-    "I love you and love you so please don't you go and leave me alone",
-    "I already know enough about your nature you can only give me false hope",
-    "I tried to get love from you but you are insensitive",
-    "I rise from my fall after you drop me and I will start over again without you",
-    "Maybe now my soul mate is still far away and I can't get it but I'm sure that mate will not go anywhere and I will get it",
-    "Just come first and then insult others if you are and are better than the one you insulted",
-    "Turning your back on him might be better than seeing him cheating in front of your own eyes",
-    "Can your heart be like a swan who is only loyal to one person"
-    "I'm standing here alone waiting for you"
-    "I only smile at you after youhurt me so you know the meaning of patience",
-    "Sorry I forgot that I'm nothing"
-    "To keep your promise, there must be proof, don't let it be just a false promise",
-    "I can't wait forever and now I'm doubting whether you still love me",
-    "Don't make me expect too much if you don't want me"
-    "Better alone than together but without certainty",
-    "Leaving does not mean you stop loving but disappointed and tired of having to fight alone",
-    "It's not that I don't want to be your girlfriend I just want to be united in the right way",
-    "There will come a time how come I will completely forget and not think about you anymore",
-    "Why should you fall in love with someone you can't have"
-    "Honestly I also have feelings for you and can't refuse you but I'm also afraid to love you",
-    "I'm sorry honey can't be what you want"
-    "Don't pay too much attention like it's quite casual without needing to cause any sense",
-    "I'm not looking for perfect but the best for me",
-    "Alone is calm, there are no quarrels, lies and many rules",
-    "A strong girl is one who is patient and keeps smiling even when she is hurt."
-    "Thanks to you I have forgotten about my past",
-    "A beautiful love story without problems is only in the world of fairy tales",
-    "You will find nothing in the past. There is only regret and heartache",
-    "Thinking about people who never think about us really makes you crazy",
-    "From so long waiting for what has been obtained",
-    "My stupid feeling is that I can fall in love with the same person even though I've been hurt many times",
-    "The one who is alone is the one who patiently waits for his true partner",
-    "I was born simple and left is normal",
-    "I love you but I'm still afraid to love you",
-    "Being able to share joys and sorrows with you has made me happy",
-    "I never thought you would be a temporary one",
-    "Don't force me to be a girl like your taste",
-    "Only the patient can get through all the disappointments"
-    "Getting back with you is the same as committing suicide and hurting my own feelings",
-    "There's no need to retaliate by hurting so that Karma will take care of all that",
-    "I still remember you but my feelings don't hurt like before",
-    "Have your own sentence & want to add it? chat *.owner*
+  "I choose to be alone, not because I'm waiting for the perfect one, but need someone who never gives up.",
+  "A single person is created with a partner he has not yet found.",
+  "Singles. Maybe it's God's way of saying 'Rest from the wrong love'.",
+  "Singles are young people who prioritize their personal development for a classier love later.",
+  "I'm not looking for someone who is perfect, but I'm looking for someone who becomes perfect thanks to my strengths.",
+  "People's boyfriends are our pending soul mates.",
+  "Singles must pass. Everything has a time, when all loneliness becomes a togetherness with a halal lover. Be patient.",
+  "Romeo was willing to die for juliet, Jack died because he saved Rose. The point is, if you want to live, be single.",
+  "I look for people not from their strengths but I look for people from their sincerity.",
+  "Madmates are not flip-flops, which are often confused. So continue to be in the proper struggle.",
+  "If you become the guitar strings, I don't want to be the guitarist. Because I don't want to dump you.",
+  "If loving you is an illusion, then let me imagine forever.",
+  "Honey... My job is only to love you, not to fight fate.",
+  "When I'm with you it feels like 1 hour is only 1 second, but when I'm away from you it feels like 1 day becomes 1 year.",
+  "Kolak bananas know sumedang, even though the distance stretches my love will never disappear.",
+  "I want to be the only one, not the one.",
+  "I can't promise to be good. But I promise to always be by your side.",
+  "If I become a representative of the people I will definitely fail, how can I think about the people if the only thing on my mind is you.",
+  "Look at my garden, full of flowers. Look at your eyes, my heart is blooming.",
+  "Promise to be with me now, tomorrow, and forever.",
+  "Missing doesnt only arise because of the distance apart But also because of wishes that dont come true",
+  "You will never be far from me, wherever I go you are always there, because you are always in my heart, what is far is only our bodies, not our hearts.",
+  "I know in every glance, we are hindered by distance and time. But I believe that later we will definitely be united.",
+  "Missing you without ever meeting is the same as creating a song that's never been sung.",
+  "There are times when distance is always a barrier between me and you, but still in my heart we are always close.",
+  "If this heart is not able to stem all the longing, what can I do but pray for you.",
+  "Maybe at this moment I can only hold back this longing. Until the time comes when I can meet and release this longing with you.",
+  "Through the turbulent longing in my heart, there sometimes I really need your loving hugs.",
+  "In the cold night, I don't remember anymore; How often I think of you miss you too.",
+  "Missing you is like rain that comes suddenly and lasts a long time. And even after the rain stops, I still miss you.",
+  "Since getting to know you, I want to continue to learn, learn to be the best for you.",
+  "Do you know the difference between a pencil and your face? If you can erase the writing pencil, but if your face nothing will be able to erase it from my mind.",
+  "It's not the National Examination tomorrow that I have to worry about, but the life test I went through after you left me.",
+  "One thing about happiness at school that keeps me motivated is being able to see your smile every day.",
+  "Do you know the difference between going to school and going to your house? If you go to school, you must bring books and pens, but if you go to your house, I just bring my heart and love.",
+  "I'm not sad if tomorrow is Monday, I'm sad if I don't meet you.",
+  "My love moment is perpendicular to your love moment. Make our love a perfect equilibrium point.",
+  "I'm willing to take part in a running race around the world, as long as you are the finish line.",
+  "My homework is to miss you. Stronger than Math, broader than Physics, stronger than Biology.",
+  "My love for you is like a metabolism, which will not stop until death.",
+  "If the jelangkung is like you, come and pick me up, I'll take you home.",
+  "Eat whatever I like as long as it's with you, including eating liver.",
+  "Love is like a death sentence. If you don't get shot, you hang it.",
+  "Loving you is like a drug: once you try to be addicted, you don't try to make yourself curious, leave it to make you addicted.",
+  "I like snacking the most because snacking is delicious. Moreover, having you completely ...",
+  "This world belongs only to the two of us. Everything else is just a contract.",
+  "For me, all those days are Tuesdays. Tuesdays in Heaven when close to you...",
+  "What if we both become a gang of criminals? I stole your heart and you stole mine.",
+  "You are like the coffee I drank this morning. Bitter, but addictive.","I'm often jealous of your lipstick. He can kiss you every day, from morning to night.",
+  "Just hearing your name can make me smile like a fool.",
+  "I know your girlfriend is not the only one, and like you not only me.",
+  "Ever since I stopped wishing on you, I've become unmotivated in everything..",
+  "With you, falling in love is the most intentional heartbreak.",
+  "It's very difficult to feel the happiness of life without you by my side.",
+  "Through the turbulent longing in my heart, there sometimes I really need your loving hugs.",
+  "If you know, until now I still love you.",
+  "Sometimes I'm jealous of kites...the strings just break, they're still being chased and don't want to be taken over by other people...",
+  "I didn't know what love was, until I finally met you. But, at that moment I knew how it felt to be heartbroken.",
+  "Chasing is tiring, but even more tired waiting\nWaiting for you to notice my existence...",
+  "Don't stop loving just because you've been hurt. Because there's no rainbow without rain, there's no true love without tears.",
+  "I have a million reasons to forget you, but nothing can force me to stop loving you.",
+  "Sometimes one feels so stupid just to love someone.",
+  "You are the best heartbreak I've never regretted.",
+  "It's not that it's not worth the wait, it's just that it often gives false hope.",
+  "Part of me hurts, Remembering her so close, yet untouchable.",
+  "The best thing about loving someone is secretly praying for them.",
+  "I wish I could get rid of this feeling as soon as I lost you.",
+  "For the sake of love we deceive ourselves. Trying to be strong turns out to be dishonorable.",
+  "Think of me as your home, if you go you know where to go home. Stay if you want and leave if you are bored...",
+  "I'm confused, should I be disappointed or not? If I'm disappointed, who am I to him?\n\nIf I'm not disappointed, but I'm waiting for his words.",
+  "My longing is like a branch that remains standing. Even though there are no more leaves to accompany it, until it finally dries up, breaks, and dies.",
+  "I guess we're just two strangers now having the same memories.",
+  "Make me hate you even if it's only for a few minutes, so it's not too hard to forget you.",
+  "I love you with all my heart, but you share your feelings with other people.",
+  "Loving you might break me, but somehow leaving you doesn't fix me.",
+  "You are first and foremost in my life. But, I am second to you.",
+  "If we can only meet in a dream, I want to sleep forever.",
+  "Seeing you happy is my happiness, even though your happy without me.",
+  "I sometimes envy an object. It has no taste but is always needed. Unlike me, who has taste, but is abandoned and ignored...",
+  "How can I move if only you my heart stops?",
+  "Memories of you are like home to me. So every time my mind wanders, it will always come back to you.",
+  "Why is tissue useful? Because love never runs dry. - Sujiwo Tejo",
+  "If loving you is a mistake, fine, let me just keep being wrong.",
+  "Ever since I met you, I want to keep learning. Learn to be the best for you.",
+  "Some people act stupid just to see you smile. And he's happy about that.",
+  "I'm not a good person, but will learn to be the best for you.",
+  "We don't die, but it's the wounds that make us unable to walk like we used to.",
+  "Your presence is like a cup of coffee that I need every morning, which can encourage me to stay excited about the day.",
+  "I really want to give the world to you. But since that's not possible, then I will give you the most important thing in my life, which is my world.",
+  "It's better to sing humorously but sweetly, rather than pretending to be romantic but having a tragic ending.",
+  "Ben doesn't end up being disappointed, you have to know when to hope and when to stop.",
+  "I, Ki wong Jowo, don't understand the meaning of I Love U.",
+  "You don't need ayu and sugih, I'm pretty sure wes are happy and crazy.",
+  "My love for your crew is shattered by the camera, focus on your crew is still blurry.",
+  "Saben dino kegowo dreams but can't be stupid.",
+  "Don't meet 30 dinos, I feel like a month.",
+  "I am without you like a cat who lost his rubber. Ambyar.",
+  "I want it, I'm playing games every time. Supoyo I'm iso nemokne kowe lewih hot. Ben Lewih dowo when I'm kanggo urip with your slira.",
+  "I never knew what opo kui tresno was, I just met thanks to your slira.",
+  "Love aa ka neng moal leungit-leungit sanajan aa geus marry deui.",
+  "Your patience is limited, but your love is ka anjeun henteu","Kanyaah, I'm sick of fading eating Bayclean.",
+  "The memories of the endah keur babarengan jeung anjeun ek tuluy are remembered, nepi ka poho.",
+  "You will always breathe alone, you will need a sejen jalmi relief.",
+  "Nyaahna aa, you need tea if the bank clerk is still collecting debts (hayoh mumuntil).",
+  "Urang's patience is the limit, but your love for urang is good for you.",
+  "Hayang I think I'm cursing up the words of love like this in this world, then I'm bade curing kumpulkeun, so that Anjeun nyaho is very big, the love for you is low, Ka Anjeun.",
+  "Calm down wae neng, ari love brother mah sapertos krispatih song; timeless.",
+  "Abdi sanes jalmi nu sampurna pikeun anjeun, sareng sanes oge nu is the best kanggo anjeun.",
+  "It's enough just to lose the network, you don't.",
+  "I'm often made to eat liver. But realizing you're still here makes me happy again.",
+  "My enemies are those who want to have you too.",
+  "Many are always there, but if you're the only one I want, then what?",
+  "My sleeping hours are ruined by longing.",
+  "It's enough that China is far away, don't love us.",
+  "What's important is your happiness, I'm not important ..",
+  "My only wish is to be loved by you...",
+  "Me without you is like an ambulance without wiuw wiuw wiuw.",
+  "It's enough that Antarctica is far away. Not Antarctica."
 ]
