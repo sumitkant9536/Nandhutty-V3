@@ -1,5 +1,5 @@
-let handler = async (m, { conn, usedPrefix, command }) => {
-  await conn.sendButton(m.chat, `“${pickRandom(global.bucin)}”`, 'ɴᴀɴᴅʜᴜᴛᴛʏ ᴠ3', 'Bucin', `${usedPrefix + command}`)
+let handler = async (m, { conn, usedPrefix }) => {
+  await conn.sendButton(m.chat, `“${pickRandom(global.bucin)}”`, '© wabot-aq', 'Bucin', `${usedPrefix}bucin`, m)
 }
 handler.help = ['bucin']
 handler.tags = ['quotes']
@@ -7,9 +7,31 @@ handler.command = /^(bucin)$/i
 
 module.exports = handler
 
+function pickRandom(list) {
+  return list[Math.floor(list.length * Math.random())]
+}
+
 // https://jalantikus.com/tips/kata-kata-bucin/
 global.bucin = [
-  
+  "Aku memilih untuk sendiri, bukan karena menunggu yang sempurna, tetapi butuh yang tak pernah menyerah.",
+  "Seorang yang single diciptakan bersama pasangan yang belum ditemukannya.",
+  "Jomblo. Mungkin itu cara Tuhan untuk mengatakan 'Istirahatlah dari cinta yang salah'.",
+  "Jomblo adalah anak muda yang mendahulukan pengembangan pribadinya untuk cinta yang lebih berkelas nantinya.",
+  "Aku bukan mencari seseorang yang sempurna, tapi aku mencari orang yang menjadi sempurna berkat kelebihanku.",
+  "Pacar orang adalah jodoh kita yang tertunda.",
+  "Jomblo pasti berlalu. Semua ada saatnya, saat semua kesendirian menjadi sebuah kebersamaan dengannya kekasih halal. Bersabarlah.",
+  "Romeo rela mati untuk juliet, Jack mati karena menyelamatkan Rose. Intinya, kalau tetap mau hidup, jadilah single.",
+  "Aku mencari orang bukan dari kelebihannya tapi aku mencari orang dari ketulusan hatinya.",
+  "Jodoh bukan sendal jepit, yang kerap tertukar. Jadi teruslah berada dalam perjuangan yang semestinya.",
+  "Kalau kamu jadi senar gitar, aku nggak mau jadi gitarisnya. Karena aku nggak mau mutusin kamu.",
+  "Bila mencintaimu adalah ilusi, maka izinkan aku berimajinasi selamanya.",
+  "Sayang... Tugas aku hanya mencintaimu, bukan melawan takdir.",
+  "Saat aku sedang bersamamu rasanya 1 jam hanya 1 detik, tetapi jika aku jauh darimu rasanya 1 hari menjadi 1 tahun.",
+  "Kolak pisang tahu sumedang, walau jarak membentang cintaku takkan pernah hilang.",
+  "Aku ingin menjadi satu-satunya, bukan salah satunya.",
+  "Aku tidak bisa berjanji untuk menjadi yang baik. Tapi aku berjanji akan selalu mendampingi kamu.",
+  "Kalau aku jadi wakil rakyat aku pasti gagal, gimana mau mikirin rakyat kalau yang selalu ada dipikiran aku hanyalah dirimu.",
+  "Lihat kebunku, penuh dengan bunga. Lihat matamu, hatiku berbunga-bunga.",
   "Berjanjilah untuk terus bersamaku sekarang, esok, dan selamanya.",
   "Rindu tidak hanya muncul karena jarak yang terpisah. Tapi juga karena keinginan yang tidak terwujud.",
   "Kamu tidak akan pernah jauh dariku, kemanapun aku pergi kamu selalu ada, karena kamu selalu di hatiku, yang jauh hanya raga kita bukan hati kita.",
