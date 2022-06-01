@@ -1,37 +1,23 @@
-const { sticker5 } = require('../lib/sticker')
-const uploadFile = require('../lib/uploadFile')
-const uploadImage = require('../lib/uploadImage')
-
-let handler = async (m, { conn, text, usedPrefix, command }) => {
+const { MessageType } = require('@adiwajshing/baileys')
+const { sticker } = require('../lib/sticker')
+let handler = async (m, { conn, text }) => {
   let stiker = false
   try {
-    let [packname, ...author] = text.split`|`
-    author = (author || []).join`|`
-    let q = m.quoted ? m.quoted : m
+    let [packname, ...author] = text.split('|')
+    author = (author || []).join('|')
     let mime = m.quoted.mimetype || ''
-    if (/webp/.test(mime)) {
-      let img = await q.download()
-      let out = await uploadFile(img)
-      stiker = await sticker5(0, out, packname || '', author || '')
-    } else if (/image/.test(mime)) {
-      let img = await q.download()
-      let out = await uploadImage(img)
-      stiker = await sticker5(0, out, packname || '', author || '')
-    } else if (/video/.test(mime)) {
-      if ((q.msg || q).seconds > 11) return m.reply('max 10 sec!')
-      let img = await q.download()
-      let out = await uploadImage(img)
-      stiker = await sticker5(0, out, packname || '', author || '')
-    }
+    if (!/webp/.test(mime)) throw 'Reply sticker!'
+    let img = await m.quoted.download()
+    stiker = await sticker(img, false, packname || '', author || '')
   } finally {
-    if (stiker) await conn.sendFile(m.chat, stiker, '', '', m, 0, { asSticker: true })
-    else throw `Reply sticker with command *${usedPrefix + command} <text>|<text>*`
+    if (stiker) conn.sendMessage(m.chat, stiker, MessageType.sticker, {
+      quoted: m
+    })
+    else throw 'Conversion failed'
   }
 }
-handler.help = ['wm <text>|<text>']
+handler.help = ['wm <packname>|<author>']
 handler.tags = ['sticker']
-handler.command = /^(wm)$/i
-
-handler.limit = 1
+handler.command = /^wm$/i
 
 module.exports = handler
