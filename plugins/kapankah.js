@@ -11,7 +11,7 @@ let handler = async (m, { conn, text }) => {
 handler.help = ['', 'kah'].map(v => 'kapan' + v + ' <text>?')
 handler.tags = ['shell']
 handler.customPrefix = /(\?$)/
-handler.command = /^kapan(kah|when)?$/i
+handler.command = /^kapan(kah)?$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
