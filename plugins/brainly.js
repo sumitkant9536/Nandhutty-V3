@@ -3,7 +3,7 @@ const brainly = new Brainly('id')
 let handler = async function (m, { text }) {
   if (!text) throw 'Soalnya?'
   let res = await brainly.search('id', text)
-  let answer = res.map(({ question, answers }, i) => `
+  let answer = map(({ question, answers }, i) => `
 _*PERTANYAAN KE ${i + 1}*_
 ${formatTags(question.content)}${answers.map((v, i) => `
 *JAWABAN KE ${i + 1}*${v.verification ? ' (Verified)' : ''}${v.isBest ? ' (Terpilih)' : ''}
