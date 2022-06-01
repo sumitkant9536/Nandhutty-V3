@@ -20,6 +20,7 @@ handler.before = async function (m) {
 @${room.p.split`@`[0]} dan 
 @${room.p2.split`@`[0]}
 
+*plese chose one*-scissors/nrock/npaper
 Please select Suit in each chat"
 click wa.me/${conn.user.jid.split`@`[0]}`, m.chat, {
         contextInfo: {
