@@ -1,15 +1,14 @@
 let fetch = require('node-fetch')
-
-let handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!text) throw `Use:\n${usedPrefix + command} <text>\n\nExample :\n${usedPrefix + command} Javascript`
-  let res = await fetch(API('amel', '/wikipedia', { q: text }, 'apikey'))
-  if (!res.ok) throw eror
+let handler = async (m, { text }) => {
+  let res = await fetch(global.API('zeks', '/api/wiki', { q: text }, 'apikey'))
+  if (!res.ok) throw await res.text()
   let json = await res.json()
-  if (!json.status) throw json
-  m.reply(json.isi)
+  if (!json.result.result) throw 'Error!'
+  if (json.result.status) m.reply(`${json.result.result}\n\n@Fatur`)
+  else throw json
 }
-handler.help = ['wikipedia <text>']
+handler.help = ['wikipedia'].map(v => v + ' <apa>')
 handler.tags = ['internet']
-handler.command = /^(wiki(pedia)?)$/i
-
+handler.command = /^(wiki|wikipedia)$/i
+//belajar ngocok
 module.exports = handler
