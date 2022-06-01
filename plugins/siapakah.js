@@ -6,13 +6,13 @@ let handler = async (m, { conn, participants, command, text }) => {
         who = member[Math.floor(Math.random() * member.length)]
     }
     let jawab = `
-*Question:* ${command} ${text}?
+*Question:* ${command} is ${text}?
 *Answer:* @${who.replace(/@.+/, '')}
     `.trim()
     conn.reply(m.chat, jawab, m)
 }
 handler.help = ['', 'kah'].map(v => 'siapa' + v + ' <text>')
 handler.tags = ['shell']
-handler.command = /^who(is)?$/i
+handler.command = /^who?$/i
 
 module.exports = handler
