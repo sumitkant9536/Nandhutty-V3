@@ -13,6 +13,6 @@ let handler = async (m, { conn, participants, command, text }) => {
 }
 handler.help = ['', 'kah'].map(v => 'siapa' + v + ' <text>')
 handler.tags = ['shell']
-handler.command = /^siapa(kah)?$/i
+handler.command = /^who(is)?$/i
 
 module.exports = handler
