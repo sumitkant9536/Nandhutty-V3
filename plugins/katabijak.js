@@ -1,10 +1,6 @@
-const { quotes } = require('../lib/scrape')
+const quotes = require('../lib/jagokata')
 let handler = async (m, { command, args, usedPrefix }) => {
-    let er = `Use:
-${usedPrefix + command} <text>
-
-Example:
-${usedPrefix + command} love
+    let er = `contoh:\n\n${usedPrefix + command} cinta
 
 ┌「 *Options* 」
 ├ love
@@ -15,7 +11,9 @@ ${usedPrefix + command} love
 ├ sadness
 ├ wedding
 ├ independence
-└────`.trim()
+
+by Ariffb, thanks to Wildan Izzudin
+https://neoxr-api.herokuapp.com/docs`
     if (!args[0]) throw er
     switch (args[0].toLowerCase()) {
         case 'love':
@@ -26,13 +24,13 @@ ${usedPrefix + command} love
         case 'sadness':
         case 'wedding':
         case 'independence':
-            quotes(args[0].toLowerCase()).then(async res => {
+            quotes(args[0].toLowerCase()).then(res => {
                 let data = JSON.stringify(res)
                 let json = JSON.parse(data)
                 let random = Math.floor(Math.random() * json.data.length)
                 let hasil = json.data[random]
                 let { author, bio, quote } = hasil
-                await conn.send2Button(m.chat, `“${quote}”`, `${author} - ${bio}`, `WORDS OF WISDOM ${args[0].toUpperCase()}`, `${usedPrefix + command} ${args[0]}`, `Random`, `${usedPrefix + command} ${conn.pickRandom(['miss', 'dream', 'alone', 'patient', 'sadness', 'marriage', 'independence'])}`, m)
+                m.reply(`“${quote}”\n\n${author} - ${bio}`)
             })
             break
         default:
@@ -41,6 +39,6 @@ ${usedPrefix + command} love
 }
 handler.help = ['katabijak'].map(v => v + ' <opsi>')
 handler.tags = ['internet']
-handler.command = /^(katabijak|jagokata)$/i
+handler.command = /^(katabijak|goodword)$/i
 
-module.exports = handler 
+module.exports = handler
