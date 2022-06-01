@@ -36,10 +36,10 @@ ${arr.slice(3, 6).join('')}
 ${arr.slice(6).join('')}
 
 Waiting @${room.game.currentTurn.split('@')[0]}
-Type *nyerah* to give up
+Type *giveup* to give up
 `.trim()
-            if (room.x !== room.o) await conn.sendButton(room.x, str, 'ɴᴀɴᴅʜᴜᴛᴛʏ ᴠ3', 'Give up', '.nyerah', m)
-            await conn.sendButton(room.o, str, 'ɴᴀɴᴅʜᴜᴛᴛʏ ᴠ3', 'Give up', '.nyerah', m)
+            if (room.x !== room.o) await conn.sendButton(room.x, str, 'ɴᴀɴᴅʜᴜᴛᴛʏ ᴠ3', 'Give up', '.giveup', m)
+            await conn.sendButton(room.o, str, 'ɴᴀɴᴅʜᴜᴛᴛʏ ᴠ3', 'Give up', '.giveup', m)
         } else {
             room = {
                 id: 'tictactoe-' + (+new Date),
