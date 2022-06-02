@@ -17,7 +17,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 ${json.soal}
 
 Timeout *${(timeout / 1000).toFixed(2)} second*
-Type ${usedPrefix}hint for help
+Type ${usedPrefix}hintw for help
 Bonus: ${poin} XP
 `.trim()
     conn.guessdis[id] = [
