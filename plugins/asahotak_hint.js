@@ -6,7 +6,7 @@ let handler = async (m, { conn }) => {
     let clue = json.jawaban.replace(/[AIUEOaiueo]/g, '_')
     conn.reply(m.chat, '```' + clue + '```\n\nreply to the question, not this message!', conn.usebrain[id][0])
 }
-handler.command = /^ao$/i
+handler.command = /^oo$/i
 
 handler.limit = true
 
