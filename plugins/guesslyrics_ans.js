@@ -5,8 +5,7 @@ module.exports = {
     let id = m.chat
     if (!m.quoted || !m.quoted.fromMe || !m.quoted.isBaileys || !/Type.*lyhint/i.test(m.quoted.text)) return !0
     this.guesslyrics = this.guesslyrics ? this.guesslyrics : {}
-    
-    if (m.quoted.id == this.guesslyrics[id][0].id) {
+        if (m.quoted.id == this.guesslyrics[id][0].id) {
         let json = JSON.parse(JSON.stringify(this.guesslyrics[id][1]))
         // m.reply(JSON.stringify(json, null, '\t'))
         if (m.text.toLowerCase() == json.jawaban.toLowerCase().trim()) {
