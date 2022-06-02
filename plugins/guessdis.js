@@ -31,6 +31,6 @@ Bonus: ${poin} XP
 }
 handler.help = ['tebakkata']
 handler.tags = ['game']
-handler.command = /^guessdis/i
+handler.command = /^guesssay/i
 
 module.exports = handler
