@@ -10,12 +10,21 @@ let handler = async (m, { conn, usedPrefix }) => {
         conn.reply(m.chat, 'There are still unanswered questions in this chat', conn.testing1[id][0])
         throw false
     }
-    let res = await fetch('https://raw.githubusercontent.com/sumitkant9536/database/master/games/tebakbendera2.json')
-    if (res.status != 200) throw await res.text()
-        let json = await res.json()
-    let json = data[Math.floor(Math.random() * data.length)]
-    let caption = `
-${json.img}
+    let res = await fetch('https://raw.githubusercontent.com/sumitkant9536/database/master/games/tebakbendera2.json',
+ {
+  method: 'POST', // or 'PUT'
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(data),
+})
+.then(response => response.json())
+.then(data => {
+  console.log('Success:', data);
+})
+.catch((error) => {
+  console.error('Error:', error);
+});
 
 Timeout *${(timeout / 1000).toFixed(2)} second*
 Type ${usedPrefix}fmhint for help
