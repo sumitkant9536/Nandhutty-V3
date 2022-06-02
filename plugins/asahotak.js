@@ -9,15 +9,15 @@ let handler = async (m, { conn, usedPrefix }) => {
         conn.reply(m.chat, 'not answered!', conn.asahotak[id][0])
         throw false
     }
-    let res = await fetch(global.API('xteam', '/game/asahotak', {}, 'APIKEY'))
-    if (!res.ok) throw await res.text()
-    let json = await res.json()
-    if (!json.status) throw json
+    let res = await fetch('https://raw.githubusercontent.com/sumitkant9536/database/master/games/asahotak.json')
+    if (!res.ok) throw await `${res.status} ${res.statusText}`
+    let data = await res.json()
+    let json = data[Math.floor(Math.random() * data.length)]
     let caption = `
-${json.result.soal}
+${json.soal}
 
-Timeout *${(timeout / 1000).toFixed(2)} detik*
-Ketik ${usedPrefix}ao untuk bantuan
+Timeout *${(timeout / 1000).toFixed(2)} second*
+Type ${usedPrefix}oo for help
 Bonus: ${poin} XP
 `.trim()
     conn.asahotak[id] = [
@@ -29,7 +29,7 @@ Bonus: ${poin} XP
         }, timeout)
     ]
 }
-handler.help = ['asahotak']
+handler.help = ['usebrain']
 handler.tags = ['game']
 handler.command = /^usebrain/i
 
