@@ -1,35 +1,37 @@
-let fetch = require('node-fetch')
-let winScore = 500
-async function handler(m) {
-    this.game = this.game ? this.game : {}
-    let id = 'family100_' + m.chat
-    if (id in this.game) {
-        this.reply(m.chat, 'Masih ada kuis yang belum terjawab di chat ini', this.game[id].msg)
+const fs = require('fs')
+const fetch = require('node-fetch')
+
+let timeout = 120000
+let poin = 500
+let handler = async (m, { conn, usedPrefix }) => {
+    conn.family100 = conn.family100 ? conn.family100 : {}
+    let id = m.chat
+    if (id in conn.family100) {
+        conn.reply(m.chat, 'There are still unanswered questions in this chat', conn.family100[id][0])
         throw false
     }
-    let res = await fetch(global.API('xteam', '/game/family100', {}, 'APIKEY'))
-    if (!res.ok) throw await res.text()
-    let json = await res.json()
-    if (!json.status) throw json
+    let res = await fetch('https://raw.githubusercontent.com/sumitkant9536/database/master/games/family100.json')
+    if (!res.ok) throw await `${res.status} ${res.statusText}`
+    let data = await res.json()
+    let json = data[Math.floor(Math.random() * data.length)]
     let caption = `
-*Soal:* ${json.soal}
+${json.soal}
 
-Terdapat *${json.jawaban.length}* jawaban${json.jawaban.find(v => v.includes(' ')) ? `
-(beberapa jawaban terdapat spasi)
-`: ''}
-
-+${winScore} XP tiap jawaban benar
+Timeout *${(timeout / 1000).toFixed(2)} second*
+Type ${usedPrefix}fmhint for help
+Bonus: ${poin} XP
     `.trim()
-    this.game[id] = {
-        id,
-        msg: await this.sendButton(m.chat, caption, author, 'Nyerah', 'nyerah', m),
-        ...json,
-        terjawab: Array.from(json.jawaban, () => false),
-        winScore,
-    }
+    conn.family100[id] = [
+        await conn.reply(m.chat, caption, m),
+        json, poin,
+        setTimeout(() => {
+            if (conn.family100[id]) conn.reply(m.chat, `Time is up!\nThe Answer Is *${json.jawaban}*`, conn.family100[id][0])
+            delete conn.family100[id]
+        }, timeout)
+    ]
 }
 handler.help = ['family100']
 handler.tags = ['game']
-handler.command = /^family100$/i
+handler.command = /^family100/i
 
 module.exports = handler
