@@ -9,7 +9,7 @@ let handler = async (m, { conn, usedPrefix }) => {
         conn.reply(m.chat, 'There are still unanswered questions in this chat', conn.guessdis[id][0])
         throw false
     }
-    let res = await fetch(global.API('xteam', '/game/tebakkata', {}, 'APIKEY'))
+    let res = await fetch('https://raw.githubusercontent.com/sumitkant9536/database/master/games/tebakkata.json')
     if (res.status !== 200) throw await res.text()
     let json = await res.json()
     if (!json.status) throw json
