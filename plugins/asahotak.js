@@ -29,7 +29,7 @@ Bonus: ${poin} XP
         }, timeout)
     ]
 }
-handler.help = ['usebrain']
+handler.help = ['asahotak']
 handler.tags = ['game']
 handler.command = /^usebrain/i
 
