@@ -29,8 +29,8 @@ Bonus: ${poin} XP
         }, timeout)
     ]
 }
-handler.help = ['tebakkata']
+handler.help = ['guessword']
 handler.tags = ['game']
-handler.command = /^guesssay/i
+handler.command = /^guessword/i
 
 module.exports = handler
