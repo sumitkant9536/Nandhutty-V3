@@ -27,7 +27,7 @@ Bonus: ${poin} XP
     }, timeout)
   ]
 }
-handler.help = ['tebakgambar']
+handler.help = ['guesspic']
 handler.tags = ['game']
 handler.command = /^guesspic/i
 
