@@ -11,11 +11,8 @@ let handler = async (m, { conn, usedPrefix }) => {
         throw false
     }
     let res = await fetch('https://raw.githubusercontent.com/sumitkant9536/database/master/games/tebakbendera2.json')
-    if (!res.ok) throw await `${res.status} ${res.statusText}`
-    let data = await res.json()
     if (res.status != 200) throw await res.text()
         let img = await res.buffer()
-        conn.sendFile(m.chat, img, '', '*© stikerin*', m, false, { thumbnail: Buffer.alloc(0) })
     let json = data[Math.floor(Math.random() * data.length)]
     let caption = `
 
