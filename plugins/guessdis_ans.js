@@ -3,7 +3,7 @@ const threshold = 0.72
 module.exports = {
     async before(m) {
         let id = m.chat
-        if (!m.quoted || !m.quoted.fromMe || !m.quoted.isBaileys || !/Type.*puzzle/i.test(m.quoted.text)) return !0
+        if (!m.quoted || !m.quoted.fromMe || !m.quoted.isBaileys || !/Type.*hint/i.test(m.quoted.text)) return !0
         this.guessdis = this.guessdis ? this.guessdis : {}
         if (!(id in this.guessdis)) return m.reply('The matter has ended')
         if (m.quoted.id == this.guessdis[id][0].id) {
