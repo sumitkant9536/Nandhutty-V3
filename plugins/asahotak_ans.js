@@ -5,7 +5,7 @@ let handler = m => m
 
 handler.before = async function (m) {
     let id = m.chat
-    if (!m.quoted || !m.quoted.fromMe || !m.quoted.isBaileys || !/Ketik.*ao/i.test(m.quoted.contentText)) return !0
+    if (!m.quoted || !m.quoted.fromMe || !m.quoted.isBaileys || !/Type.*oo/i.test(m.quoted.contentText)) return !0
     this.usebrain = this.usebrain ? this.usebrain : {}
     if (!(id in this.asahotak)) return m.reply('Brain Teaser has ended')
     if (m.quoted.id == this.asahotak[id][0].id) {
