@@ -12,9 +12,10 @@ let handler = async (m, { conn, usedPrefix }) => {
     }
     let res = await fetch('https://raw.githubusercontent.com/sumitkant9536/database/master/games/tebakbendera2.json')
     if (res.status != 200) throw await res.text()
-        let img = await res.buffer()
-    let json = img[Math.floor(Math.random() * img.length)]
+        let json = await res.json()
+    let json = data[Math.floor(Math.random() * data.length)]
     let caption = `
+${json.img}
 
 Timeout *${(timeout / 1000).toFixed(2)} second*
 Type ${usedPrefix}fmhint for help
