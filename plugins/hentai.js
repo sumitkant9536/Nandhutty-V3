@@ -1,5 +1,5 @@
 let handler = async(m, { conn }) => {
-  await conn.sendFile(m.chat, pickRandom(asupan), 'asupan.mp4', '', m)
+  await conn.sendFile(m.chat, pickRandom(asupan), 'asupan.jpg', '', m)
 }
 handler.help = ['hentai']
 handler.tags = ['tools']
@@ -23,13 +23,14 @@ function pickRandom(list) {
 }
 
 const asupan = [
-"https://www.reddit.com/r/hentai/top/?t=all",
-"https://www.reddit.com/r/HentaiHumiliation/top/?t=all",
-"https://www.reddit.com/r/HentaiPics/top/?t=all",
-"https://www.reddit.com/r/HentaiLovers/top/?t=all",
-"https://www.reddit.com/r/Hentai4Everyone/top/?t=all",
-"https://www.reddit.com/r/ecchi/top/?t=all",
-"https://www.reddit.com/r/MonsterGirl/top/?t=all",
-"https://www.reddit.com/r/sukebei/top/?t=all",
-"https://www.reddit.com/r/yaoi/top/?t=all"
+"http://cdn.awwni.me/16c8v.jpg",
+"http://i.imgur.com/06YTAjg.jpg",
+"http://i.imgur.com/0cXfzlu.jpg",
+"http://i.imgur.com/0skVenv.jpg",
+"http://i.imgur.com/16rGP2n.jpg",
+"http://i.imgur.com/2ixz0tk.jpg",
+"http://i.imgur.com/3z74PMH.jpg",
+"http://i.imgur.com/4PYuCei.jpg",
+"http://i.imgur.com/7xWnKOn.jpg",
+"http://i.imgur.com/C30p5wA.jpg",
 ]
