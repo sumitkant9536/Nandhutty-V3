@@ -10,11 +10,11 @@ let handler = async (m, { conn, usedPrefix }) => {
         throw false
     }
     let res = await fetch('https://raw.githubusercontent.com/sumitkant9536/database/master/games/tebakkata.json')
-    if (res.status !== 200) throw await res.text()
-    let json = await res.json()
-    if (!json.status) throw json
+    if (!res.ok) throw await `${res.status} ${res.statusText}`
+    let data = await res.json()
+    let json = data[Math.floor(Math.random() * data.length)]
     let caption = `
-${json.result.soal}
+${json.soal}
 
 Timeout *${(timeout / 1000).toFixed(2)} second*
 Type ${usedPrefix}puzzle for help
