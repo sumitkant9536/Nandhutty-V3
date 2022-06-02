@@ -1,33 +1,34 @@
 let fetch = require('node-fetch')
+
 let timeout = 120000
 let poin = 500
-
 let handler = async (m, { conn, usedPrefix }) => {
-  conn.tebakgambar = conn.tebakgambar ? conn.tebakgambar : {}
+  conn.guesspic = conn.guesspic ? conn.guesspic : {}
   let id = m.chat
-  if (id in conn.tebakgambar) return conn.reply(m.chat, 'Not yet answered!', conn.tebakgambar[id][0])
-  let res = await fetch(API('amel', '/tebakgambar', {}, 'apikey'))
-  if (!res.ok) throw eror
+  if (id in conn.guesspic) {
+    conn.reply(m.chat, 'There are still unanswered questions in this chat', conn.tebakgambar[id][0])
+    throw false
+  }
+  let res = await fetch(global.API('zahir', '/api/kuis/tebakgambar', {}, 'apikey'))
+  if (res.status !== 200) throw await res.text()
   let json = await res.json()
-  if (!json.status) throw json
+  // if (!json.status) throw json
   let caption = `
-${json.deskripsi}
-Time *${(timeout / 1000).toFixed(2)} second*
-Type ${usedPrefix}hint for help
-`.trim()
-  conn.tebakgambar[id] = [
-    await conn.sendButtonImg(m.chat, json.img, caption, 'ɴᴀɴᴅʜᴜᴛᴛʏ ᴠ3', 'Help', '.hint', m),
+Timeout *${(timeout / 1000).toFixed(2)} second*
+Type ${usedPrefix}hint for hint
+Bonus: ${poin} XP
+    `.trim()
+  conn.guesspic[id] = [
+    await conn.sendFile(m.chat, json.result.images, 'tebakgambar.jpg', caption, m, false, { thumbnail: Buffer.alloc(0) }),
     json, poin,
     setTimeout(() => {
-      if (conn.tebakgambar[id]) conn.sendButton(m.chat, `Time is up!\nThe answer is *${json.jawaban}*`, 'ɴᴀɴᴅʜᴜᴛᴛʏ ᴠ3', 'Guess the picture', '.tebakgambar', conn.tebakgambar[id][0])
-      delete conn.tebakgambar[id]
+      if (conn.guesspic[id]) conn.reply(m.chat, `Time is up!\nThe Answer Is *${json.result.jawaban}*`, conn.guesspic[id][0])
+      delete conn.guesspic[id]
     }, timeout)
   ]
 }
 handler.help = ['tebakgambar']
 handler.tags = ['game']
-handler.command = /^tebakgambar$/i
-
-handler.game = true
+handler.command = /^guesspic/i
 
 module.exports = handler
