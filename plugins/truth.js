@@ -32,7 +32,7 @@ let handler = async (m, { conn }) => {
 "Name an incident that made you feel hurt that you still remember.",
 "What have you achieved this year?",
 "What's your worst habit at school?",
-"when was the last time you Masturbation?",
+"when was the last time you Masturbation?"
 ]  // add your own words
 	conn.sendFile(m.chat, img, 'maker.jpeg', `*Truth*\n\n“${pickRandom(trut)}”`, m, false, { thumbnail: Buffer.alloc(0) })
 }
