@@ -13,7 +13,7 @@ let handler = async (m, { conn }) => {
     let pesan = sorted.map(v => `${v[0].replace(/(\d+)@.+/, '@$1')}: ${v[1]} message`).join('\n')
     m.reply(`${totalM} The last message\n${pesan}`)
 }
-handler.help = ['totalpesan']
+handler.help = ['totalmsg']
 handler.tags = ['group']
 handler.command = /^total(message|msg|pesan)$/i
 
