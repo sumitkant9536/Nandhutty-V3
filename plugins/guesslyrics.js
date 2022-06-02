@@ -4,10 +4,10 @@ const fetch = require('node-fetch')
 let timeout = 120000
 let poin = 500
 let handler = async (m, { conn, usedPrefix }) => {
-    conn.tebaklirik = conn.tebaklirik ? conn.tebaklirik : {}
+    conn.guesslyrics = conn.guesslyrics ? conn.guesslyrics : {}
     let id = m.chat
-    if (id in conn.tebaklirik) {
-        conn.reply(m.chat, 'Masih ada soal belum terjawab di chat ini', conn.tebaklirik[id][0])
+    if (id in conn.guesslyrics) {
+        conn.reply(m.chat, 'There are still unanswered questions in this chat', conn.guesslyrics[id][0])
         throw false
     }
     let res = await fetch('https://raw.githubusercontent.com/sumitkant9536/database/master/games/tebaklirik.json')
@@ -17,21 +17,21 @@ let handler = async (m, { conn, usedPrefix }) => {
     let caption = `
 ${json.soal}
 
-Timeout *${(timeout / 1000).toFixed(2)} detik*
-Ketik ${usedPrefix}teli untuk bantuan
+Timeout *${(timeout / 1000).toFixed(2)} second*
+Type ${usedPrefix}lyhint for help
 Bonus: ${poin} XP
     `.trim()
-    conn.tebaklirik[id] = [
+    conn.guesslyrics[id] = [
         await conn.reply(m.chat, caption, m),
         json, poin,
         setTimeout(() => {
-            if (conn.tebaklirik[id]) conn.reply(m.chat, `Waktu habis!\nJawabannya adalah *${json.jawaban}*`, conn.tebaklirik[id][0])
-            delete conn.tebaklirik[id]
+            if (conn.guesslyrics[id]) conn.reply(m.chat, `Time is up!\nThe Answer Is *${json.jawaban}*`, conn.guesslyrics[id][0])
+            delete conn.guesslyrics[id]
         }, timeout)
     ]
 }
-handler.help = ['tebaklirik']
+handler.help = ['guesslyrics']
 handler.tags = ['game']
-handler.command = /^tebaklirik/i
+handler.command = /^guesslyrics/i
 
 module.exports = handler
