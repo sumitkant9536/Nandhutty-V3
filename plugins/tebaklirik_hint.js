@@ -1,10 +1,10 @@
 let handler = async (m, { conn }) => {
-    conn.tebaklirik = conn.tebaklirik ? conn.tebaklirik : {}
+    conn.guesslyrics = conn.guesslyrics ? conn.guesslyrics : {}
     let id = m.chat
-    if (!(id in conn.tebaklirik)) throw false
-    let json = conn.tebaklirik[id][1]
+    if (!(id in conn.guesslyrics)) throw false
+    let json = conn.guesslyrics[id][1]
     m.reply('```' + json.jawaban.replace(/[AUIEOaiueo]/g, '_') + '```')
 }
-handler.command = /^teli$/i
+handler.command = /^lyhint$/i
 handler.limit = true
 module.exports = handler
