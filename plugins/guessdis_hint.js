@@ -7,6 +7,6 @@ let handler = async (m, { conn }) => {
     let clue = ans.replace(/[AIUEO]/g, '_')
     m.reply('```' + clue + '```')
 }
-handler.command = /^hint$/i
+handler.command = /^hintw$/i
 handler.limit = true
 module.exports = handler
