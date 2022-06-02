@@ -1,13 +1,13 @@
-let handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!text) throw `Use:\n${usedPrefix + command} <text>\n\nExample:\n${usedPrefix + command} this is a comment`
-  conn.sendFile(m.chat, API('https://some-random-api.ml', '/canvas/youtube-comment', {
+let handler = async (m, { conn, text }) => {
+  if (!text) throw 'No Text'
+  conn.sendFile(m.chat, global.API('https://some-random-api.ml', '/canvas/youtube-comment', {
     avatar: await conn.getProfilePicture(m.sender).catch(_ => ''),
     comment: text,
     username: conn.getName(m.sender)
-  }), 'file.png', '', m, 0, { thumbnail: Buffer.alloc(0) })
+  }), 'yt-comment.png', 'Here is your comment', m)
 }
 
-handler.help = ['ytcomment <text>']
+handler.help = ['ytcomment <comment>']
 handler.tags = ['maker']
 
 handler.command = /^(ytcomment)$/i
