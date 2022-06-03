@@ -9,12 +9,12 @@ module.exports = {
         if (m.quoted.id == this.guessword[id][0].id) {
         let json = JSON.parse(JSON.stringify(this.guessword[id][1]))
         // m.reply(JSON.stringify(json, null, '\t'))
-        if (m.text.toLowerCase() == json.jawaban.toLowerCase().trim()) {
+        if (m.text.toLowerCase() == json.answer.toLowerCase().trim()) {
             global.db.data.users[m.sender].exp += this.guessword[id][2]
             m.reply(`*Correct!*\n+${this.guessword[id][2]} XP`)
             clearTimeout(this.guessword[id][3])
             delete this.guessword[id]
-        } else if (similarity(m.text.toLowerCase(), json.jawaban.toLowerCase().trim()) >= threshold) m.reply(`*a little more!*`)
+        } else if (similarity(m.text.toLowerCase(), json.answer.toLowerCase().trim()) >= threshold) m.reply(`*a little more!*`)
         else m.reply(`*Wrong!*`)
     }
     return !0
