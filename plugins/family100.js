@@ -10,7 +10,7 @@ let handler = async (m, { conn, usedPrefix }) => {
         conn.reply(m.chat, 'There are still unanswered questions in this chat', conn.family100[id][0])
         throw false
     }
-    let res = await fetch('https://raw.githubusercontent.com/sumitkant9536/database/master/games/family100.json')
+    let res = await fetch('https://raw.githubusercontent.com/sumitkant9536/database/master/games/testing.json')
     if (!res.ok) throw await `${res.status} ${res.statusText}`
     let data = await res.json()
     let json = data[Math.floor(Math.random() * data.length)]
