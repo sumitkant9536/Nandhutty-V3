@@ -15,7 +15,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     let data = await res.json()
     let json = data[Math.floor(Math.random() * data.length)]
     let caption = `
-*Question_* ${json.soal}
+*Question_* ${json.question}
 
 Timeout *${(timeout / 1000).toFixed(2)} second*
 Type ${usedPrefix}brhint for help
