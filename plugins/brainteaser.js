@@ -10,12 +10,12 @@ let handler = async (m, { conn, usedPrefix }) => {
         conn.reply(m.chat, 'There are still unanswered questions in this chat', conn.brainteaser[id][0])
         throw false
     }
-    let res = await fetch('https://raw.githubusercontent.com/sumitkant9536/database/master/games/asahotak.json')
+    let res = await fetch('https://raw.githubusercontent.com/sumitkant9536/database/master/games/brainteaser.json')
     if (!res.ok) throw await `${res.status} ${res.statusText}`
     let data = await res.json()
     let json = data[Math.floor(Math.random() * data.length)]
     let caption = `
-${json.soal}
+*Question_* ${json.soal}
 
 Timeout *${(timeout / 1000).toFixed(2)} second*
 Type ${usedPrefix}brhint for help
@@ -25,7 +25,7 @@ Bonus: ${poin} XP
         await conn.reply(m.chat, caption, m),
         json, poin,
         setTimeout(() => {
-            if (conn.brainteaser[id]) conn.reply(m.chat, `Time is up!\nThe Answer Is *${json.jawaban}*`, conn.brainteaser[id][0])
+            if (conn.brainteaser[id]) conn.reply(m.chat, `Time is up!\nThe Answer Is *${json.answer}*`, conn.brainteaser[id][0])
             delete conn.brainteaser[id]
         }, timeout)
     ]
