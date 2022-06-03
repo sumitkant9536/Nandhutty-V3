@@ -19,7 +19,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 \n*Click the url and guess the country flag*
 
 Timeout *${(timeout / 1000).toFixed(2)} second*
-Type ${usedPrefix}wrhint for help
+Type ${usedPrefix}flhint for help
 Bonus: ${poin} XP
     `.trim()
     conn.guessflag[id] = [
