@@ -10,12 +10,12 @@ let handler = async (m, { conn, usedPrefix }) => {
         conn.reply(m.chat, 'There are still unanswered questions in this chat', conn.whoami[id][0])
         throw false
     }
-    let res = await fetch('https://raw.githubusercontent.com/sumitkant9536/database/master/games/siapakahaku.json')
+    let res = await fetch('https://raw.githubusercontent.com/sumitkant9536/database/master/games/whoami.json')
     if (!res.ok) throw await `${res.status} ${res.statusText}`
     let data = await res.json()
     let json = data[Math.floor(Math.random() * data.length)]
     let caption = `
-${json.soal}
+*Question-* ${json.question}
 
 Timeout *${(timeout / 1000).toFixed(2)} second*
 Type ${usedPrefix}whhint for help
@@ -25,7 +25,7 @@ Bonus: ${poin} XP
         await conn.reply(m.chat, caption, m),
         json, poin,
         setTimeout(() => {
-            if (conn.whoami[id]) conn.reply(m.chat, `Time is up!\nThe Answer Is *${json.jawaban}*`, conn.whoami[id][0])
+            if (conn.whoami[id]) conn.reply(m.chat, `Time is up!\nThe Answer Is *${json.answer}*`, conn.whoami[id][0])
             delete conn.whoami[id]
         }, timeout)
     ]
