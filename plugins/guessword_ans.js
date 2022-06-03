@@ -5,7 +5,7 @@ module.exports = {
     let id = m.chat
     if (!m.quoted || !m.quoted.fromMe || !m.quoted.isBaileys || !/Type.*wrhint/i.test(m.quoted.text)) return !0
     this.guessword = this.guessword ? this.guessword : {}
-        if (!(id in this.guessword)) return m.reply('The matter has ended')
+        if (!(id in this.guessword)) return !0
         if (m.quoted.id == this.guessword[id][0].id) {
         let json = JSON.parse(JSON.stringify(this.guessword[id][1]))
         // m.reply(JSON.stringify(json, null, '\t'))
