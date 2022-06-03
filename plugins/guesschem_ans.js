@@ -3,9 +3,9 @@ const threshold = 0.72
 module.exports = {
     async before(m) {
     let id = m.chat
-    if (!m.quoted || !m.quoted.fromMe || !m.quoted.isBaileys || !/Type.*wrhint/i.test(m.quoted.text)) return !0
+    if (!m.quoted || !m.quoted.fromMe || !m.quoted.isBaileys || !/Type.*chhint/i.test(m.quoted.text)) return !0
     this.guesschem = this.guesschem ? this.guesschem : {}
-        if (!(id in this.guesschem)) return !0
+        if (!(id in this.guesschem)) return m.reply("galat")
         if (m.quoted.id == this.guesschem[id][0].id) {
         let json = JSON.parse(JSON.stringify(this.guesschem[id][1]))
         // m.reply(JSON.stringify(json, null, '\t'))
