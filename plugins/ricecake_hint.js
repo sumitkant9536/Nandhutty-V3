@@ -3,7 +3,7 @@ let handler = async (m, { conn }) => {
     let id = m.chat
     if (!(id in conn.ricecake)) throw false
     let json = conn.ricecake[id][1]
-    m.reply('```' + json.jawaban.replace(/[AUIEOaiueo]/g, '_') + '```')
+    m.reply('```' + json.answer.replace(/[AUIEOaiueo]/g, '_') + '```')
 }
 handler.command = /^rchint$/i
 handler.limit = true
