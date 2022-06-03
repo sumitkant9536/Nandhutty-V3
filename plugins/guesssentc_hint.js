@@ -3,7 +3,7 @@ let handler = async (m, { conn }) => {
     let id = m.chat
     if (!(id in conn.guesssentc)) throw false
     let json = conn.guesssentc[id][1]
-    m.reply('```' + json.snhint.replace(/[AUIEOaiueo]/g, '_') + '```')
+    m.reply('```' + json.answer.replace(/[AUIEOaiueo]/g, '_') + '```')
 }
 handler.command = /^snhint$/i
 handler.limit = true
