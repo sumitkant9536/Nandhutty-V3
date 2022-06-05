@@ -10,21 +10,17 @@ let handler = async (m, { conn, usedPrefix }) => {
         conn.reply(m.chat, 'There are still unanswered questions in this chat', conn.guessph[id][0])
         throw false
     }
-    let res = await fetch('https://raw.githubusercontent.com/sumitkant9536/database/master/games/tebakgambar.json')
-    if (!res.ok) throw await `${res.status} ${res.statusText}`
-    let data = await res.json()
-    let json = data[Math.floor(Math.random() * data.length)]
-    let caption = `
-${json.img}
-${json.deskripsi}
-
+    if (!src) src = await (await fetch(global.API('https://raw.githubusercontent.com', '/sumitkant9536/database/master/games/guesspic.json'))).json()
+  let json = src[Math.floor(Math.random() * src.length)]
+  if (!json) throw json
+  let caption = `
 Timeout *${(timeout / 1000).toFixed(2)} second*
-Type ${usedPrefix}wrhint for help
+Ketik ${usedPrefix}hint untuk hint
 Bonus: ${poin} XP
     `.trim()
-    conn.guessph[id] = [
-        await conn.reply(m.chat, caption, m),
-        json, poin,
+  conn.guessph[id] = [
+    await conn.sendFile(m.chat, json.img, 'guessph.jpg', caption, m, false),
+    json, poin,
         setTimeout(() => {
             if (conn.guessph[id]) conn.reply(m.chat, `Time is up!\nThe Answer Is *${json.jawaban}*`, conn.guessph[id][0])
             delete conn.guessph[id]
