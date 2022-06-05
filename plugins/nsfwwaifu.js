@@ -11,6 +11,6 @@ handler.tags = ['nsfw']
 handler.command = /^(waifunsfw)$/i
 
 handler.limit = true
-handler.nsfw = true
+handler.nsfw = false
 
 module.exports = handler
