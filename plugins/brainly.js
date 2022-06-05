@@ -1,9 +1,9 @@
 const { Brainly } = require('brainly-scraper-v2')
 const brainly = new Brainly('id')
 let handler = async function (m, { text }) {
-  if (!text) throw 'Soalnya?'
+  if (!text) throw 'because?'
   let res = await brainly.search('id', text)
-  let answer = map(({ question, answers }, i) => `
+  let answer = res.map(({ question, answers }, i) => `
 _*PERTANYAAN KE ${i + 1}*_
 ${formatTags(question.content)}${answers.map((v, i) => `
 *JAWABAN KE ${i + 1}*${v.verification ? ' (Verified)' : ''}${v.isBest ? ' (Terpilih)' : ''}
@@ -14,7 +14,7 @@ ${formatTags(v.content)}`).join``}`).join(`
 `)
   m.reply(answer)
 }
-handler.help = ['brainly <question>']
+handler.help = ['brainly <soal>']
 handler.tags = ['internet']
 
 handler.command = /^brainly$/i
