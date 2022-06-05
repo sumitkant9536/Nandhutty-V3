@@ -1,23 +1,18 @@
-
 let { WAMessageProto } = require('@adiwajshing/baileys')
-
-let handler = async(m, { conn, command, usedPrefix, text }) => {
+let handler = async (m, { command, usedPrefix, text }) => {
     let M = WAMessageProto.WebMessageInfo
     let which = command.replace(/add/i, '')
-    if (!m.quoted) throw `Reply message with command *${usedPrefix + command}*`
-    if (!text) throw `Usage:${usedPrefix + command} <text>\n\nExample:\n${usedPrefix + command} test`
-    let msgs = db.data.msgs
-    if (text in msgs) throw `'${text}' has been registered!`
+    if (!m.quoted) throw 'reply to the message!'
+    if (!text) throw `use *${usedPrefix}list${which}* to see the list`
+    let msgs = global.db.data.msgs
+    if (text in msgs) throw `'${text}' registered in the message list`
     msgs[text] = M.fromObject(await m.getQuotedObj()).toJSON()
-    if (db.data.chats[m.chat].getmsg) return m.reply(`Successfully added message '${text}'
+    m.reply(`Successfully added message in message list as '${text}'
     
-Access it by typing its name`.trim())
-    else return await conn.sendButton(m.chat, `Successfully added message '${text}'
-    
-access with ${usedPrefix}get${which} ${text}`, '© sticker', 'Activate', '.on getmsg', m)
+Access with ${usedPrefix}get${which} ${text}`)
 }
-handler.help = ['vn', 'msg', 'video', 'audio', 'img', 'stickers', 'gif'].map(v => 'add' + v + ' <text>' )
+handler.help = ['vn', 'msg', 'video', 'audio', 'img', 'sticker', 'gif'].map(v => 'add' + v + ' <teks>')
 handler.tags = ['database']
-handler.command = /^add(vn|msg|video|audio|img|stic?ker|gif)$/
+handler.command = /^add(vn|msg|video|audio|img|sticker|gif)$/
 
 module.exports = handler
