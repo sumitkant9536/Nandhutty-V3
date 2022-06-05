@@ -1,4 +1,4 @@
-const fs = require('fs')
+
 const fetch = require('node-fetch')
 
 let timeout = 120000
@@ -19,10 +19,10 @@ Ketik ${usedPrefix}hint untuk hint
 Bonus: ${poin} XP
     `.trim()
   conn.guessph[id] = [
-    await conn.sendFile(m.chat, json.img, 'guessph.jpg', caption, m, false),
+    await conn.sendFile(m.chat, json.img, 'guesspic.jpg', caption, m, false),
     json, poin,
         setTimeout(() => {
-            if (conn.guessph[id]) conn.reply(m.chat, `Time is up!\nThe Answer Is *${json.jawaban}*`, conn.guessph[id][0])
+            if (conn.guessph[id]) conn.reply(m.chat, `Time is up!\nThe Answer Is *${json.answer}*`, conn.guessph[id][0])
             delete conn.guessph[id]
         }, timeout)
     ]
