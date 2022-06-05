@@ -23,7 +23,7 @@ Type ${usedPrefix}flhint for help
 Bonus: ${poin} XP
     `.trim()
     conn.guessflag[id] = [
-        await conn.reply(m.chat, guessflag2.jpg, caption, m),
+        await conn.reply(m.chat, 'guessflag2.jpg', caption, m),
         json, poin,
         setTimeout(() => {
             if (conn.guessflag[id]) conn.reply(m.chat, `Time is up!\nThe Answer Is *${json.name}*`, conn.guessflag[id][0])
