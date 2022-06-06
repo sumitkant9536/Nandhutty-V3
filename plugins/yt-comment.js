@@ -4,7 +4,7 @@ let handler = async (m, { conn, text }) => {
     avatar: await conn.getProfilePicture(m.sender).catch(_ => ''),
     comment: text,
     username: conn.getName(m.sender)
-  }), 'yt-comment.png', 'Here is your comment', m)
+  }), 'file.png', '', m, 0, { thumbnail: Buffer.alloc(0) })
 }
 
 handler.help = ['ytcomment <comment>']
