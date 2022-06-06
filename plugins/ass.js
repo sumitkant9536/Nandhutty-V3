@@ -1,5 +1,5 @@
 let handler = async(m, { conn }) => {
-  await conn.sendFile(m.chat, pickRandom(ass), 'ass.mp4', '', m)
+  await conn.sendFile(m.chat, pickRandom(ass), 'ass.gif', '', m)
 }
 handler.help = ['ass']
 handler.tags = ['nsfw']
