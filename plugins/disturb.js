@@ -1,5 +1,5 @@
 let handler = async (m, { conn, usedPrefix, command }) => {
-  await conn.sendButton(m.chat, `*${pickRandom(global.disturb)}*`, watermark, 'Disturbs', `${usedPrefix + command}`)
+  await conn.sendButton(m.chat, `*${pickRandom(global.disturb)}*`, watermark, 'Disturb', `${usedPrefix + command}`)
 }
 handler.help = ['disturb']
 handler.tags = ['tools']
@@ -61,7 +61,7 @@ global.disturb = [
     "You can only be silent and think, why are loyal and good people left behind, the naughty ones are chased, they are left behind, they say that all men are the same",
     "Even though it's only for a moment you make me happy, but the feeling of happiness that he doesn't quickly forget.",
     "I didn't expect you to go and forget me so quickly",
-    "Singles don't have to stay at home on weekends, go out, singles can be free to be close to anyone, girlfriend, ex-friend, even alone or with the devil,"
+    "Singles don't have to stay at home on weekends, go out, singles can be free to be close to anyone, girlfriend, ex-friend, even alone or with the devil",
     "You are a friend who is always by my side in happy and difficult circumstances. Thank you for always being by my side",
     "I don't really know in your heart it's me or him",
     "It's not easy to forget you because I love you so much even though you have hurt me many times",
