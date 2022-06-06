@@ -9,7 +9,7 @@ handler.mods = false
 handler.premium = false
 handler.group = true
 handler.private = false
-handler.nsfw = true
+handler.nsfw = false
 
 handler.admin = false
 handler.botAdmin = false
