@@ -1,32 +1,27 @@
-const fetch = require('node-fetch')
-const { sticker5 } = require('../lib/sticker')
+import { sticker } from '../lib/sticker.js'
+import { stickerLine, stickerTelegram } from '@bochilteam/scraper'
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
-
-    if (!args[0]) throw `Use :\n${usedPrefix + command} <url>\n\nExample :\n${usedPrefix + command} https://store.line.me/stickershop/product/8149770`
-    if (!args[0].match(/(https:\/\/store.line.me\/stickershop\/product\/.*)/gi)) throw `wrong url`
-
-    let res = await fetch(global.API('zeks', '/api/linesticker', { link: args[0] }, 'apikey'))
-    if (!res.ok) throw eror
-    let json = await res.json()
-    if (!json.status) throw json
-    let hasil = json.sticker.map((v, i) => `${i + 1}. ${v}`).join('\n')
-    m.reply(`*${json.title}*
-*Estimated complete:* ${json.sticker.length * 1.5} second
-    `.trim())
-
-    for (let i of json.sticker) {
-        stiker = await sticker5(false, i, global.packname, global.author)
-        await conn.sendFile(m.chat, stiker, '', '', m, 0, { asSticker: true })
-        await conn.delay(1500)
+    // TODO: add stickerly
+    const isTele = /tele/i.test(command)
+    if (!args[0]) throw `*Perintah ini untuk mengambil stiker dari ${isTele ? 'Tele' : 'Line'}*\n\nContoh penggunaan:\n${usedPrefix + command} spongebob`
+    const json = await (isTele ? stickerTelegram : stickerLine)(args[0])
+    m.reply(`
+*Total stiker:* ${(json[0]?.stickers || json).length}
+`.trim())
+    for (let data of (json[0]?.stickers || json)) {
+        const stiker = await sticker(false, data.sticker || data, global.packname, global.author)
+        await conn.sendFile(m.chat, stiker, 'sticker.webp', '', m).catch(console.error)
+        await delay(1500)
     }
-    m.reply('_*Finished*_')
 
 }
-handler.help = ['stickerline <url>']
+handler.help = ['stikerline <url>']
 handler.tags = ['sticker']
-handler.command = /^(stic?kerline)$/i
+handler.command = /^(stic?ker(line|tele(gram)?))$/i
 
-handler.limit = 1
+handler.limit = true
 
-module.exports = handler 
+export default handler
+
+const delay = time => new Promise(res => setTimeout(res, time))
