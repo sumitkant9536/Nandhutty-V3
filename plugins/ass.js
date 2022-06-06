@@ -23,8 +23,8 @@ function pickRandom(list) {
   return list[Math.floor(list.length * Math.random())]
 }
 
-const asupan = [
-'http://porngif.top/gif/zadky/0001.gif',
+const ass = [
+      'http://porngif.top/gif/zadky/0001.gif',
       'http://porngif.top/gif/zadky/0002.gif',
       'http://porngif.top/gif/zadky/0003.gif',
       'http://porngif.top/gif/zadky/0004.gif',
