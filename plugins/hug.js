@@ -11,7 +11,7 @@ let handler = async (m, { conn, command }) => {
 		conn.sendFile(
 			m.chat,
 			json.link,
-			"wibukontol.gif",
+			"wibukontol.webp",
 			`@${m.sender.split("@")[0]} ${command} ${m.mentionedJid
 				.map((user) =>
 					user === m.sender ? "themselves " : `@${user.split("@")[0]}`
