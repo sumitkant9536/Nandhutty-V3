@@ -23,7 +23,7 @@ function pickRandom(list) {
 }
 
 const ttvd = [
-"https://l.top4top.io/m_196632pm21.mp4"
+"https://l.top4top.io/m_196632pm21.mp4",
 "https://k.top4top.io/m_196696fby1.mp4",
 "https://i.top4top.io/m_19665qrmn1.mp4",
 "https://j.top4top.io/m_19660pebi1.mp4",
