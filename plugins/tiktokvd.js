@@ -1,7 +1,7 @@
 let handler = async(m, { conn }) => {
   await conn.sendFile(m.chat, pickRandom(tiktokvd), 'tiktokvd.mp4', '', m)
 }
-handler.help = ['asupan']
+handler.help = ['tiktokvd']
 handler.tags = ['tools']
 handler.command = /^tiktokvd$/i
 handler.owner = false
