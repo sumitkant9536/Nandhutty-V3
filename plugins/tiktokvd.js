@@ -1,9 +1,9 @@
 let handler = async(m, { conn }) => {
-  await conn.sendFile(m.chat, pickRandom(tiktokvd), 'tiktokvd.mp4', '', m)
+  await conn.sendFile(m.chat, pickRandom(ttvd), 'ttvd.mp4', '', m)
 }
-handler.help = ['tiktokvd']
+handler.help = ['ttvd']
 handler.tags = ['tools']
-handler.command = /^tiktokvd$/i
+handler.command = /^ttvd$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
@@ -22,7 +22,7 @@ function pickRandom(list) {
   return list[Math.floor(list.length * Math.random())]
 }
 
-const tiktokvd = [
+const ttvd = [
 "https://l.top4top.io/m_196632pm21.mp4"
 "https://k.top4top.io/m_196696fby1.mp4",
 "https://i.top4top.io/m_19665qrmn1.mp4",
