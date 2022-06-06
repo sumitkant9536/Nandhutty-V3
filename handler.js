@@ -17,6 +17,7 @@ module.exports = {
       simple.smsg(this, m)
       switch (m.mtype) {
         case MessageType.image:
+        case MessageType.gif:
         case MessageType.video:
         case MessageType.audio:
           if (!m.key.fromMe) await delay(1000)
