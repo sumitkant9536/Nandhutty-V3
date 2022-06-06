@@ -1,13 +1,27 @@
 let handler = async (m, { conn, usedPrefix, command }) => {
-    await conn.sendButton(m.chat, `“${conn.pickRandom(global.galau)}”`, '© ɴᴀɴᴅʜᴜᴛᴛʏ ᴠ3', 'Galau', `${usedPrefix + command}`, m)
+  await conn.sendButton(m.chat, `*${pickRandom(global.disturb)}*`, watermark, 'Disturbs', `${usedPrefix + command}`)
 }
-handler.help = ['sadquotes']
-handler.tags = ['quotes']
-handler.command = /^(sadquotes)$/i
+handler.help = ['disturb']
+handler.tags = ['tools']
+handler.command = /^(disturb)$/i
+handler.owner = false
+handler.mods = false
+handler.premium = false
+handler.group = false
+handler.private = false
+
+handler.admin = false
+handler.botAdmin = false
+
+handler.fail = null
 
 module.exports = handler
 
-global.galau = [
+function pickRandom(list) {
+  return list[Math.floor(list.length * Math.random())]
+}
+
+global.disturb = [
     "It's not wrong if I expect more from someone who is more certain without breaking promises",
     "If I really don't love you, why am I thinking about you. But all of you think I don't love you",
     "Don't be jealous and sad if you don't have the ability that other people have. Rest assured that other people also don't have the ability like you",
@@ -20,8 +34,8 @@ global.galau = [
     "Try to pause for a moment to think about how we can solve this problem together",
     "Can we not be enemies after parting, I want us to be like we used to be before we started having fun together, joking and others",
     "I want you to be with me forever and I hope you can be my soul mate",
-    "Love can't be explained in words, because love can only be felt by the heart."
-    "The biggest problem in a person is not being able to fight his fear"
+    "Love can't be explained in words, because love can only be felt by the heart.",
+    "The biggest problem in a person is not being able to fight his fear",
     "Good morning to people I love and people who hate me, I hope today is a better day than yesterday for me and you",
     "Don't give up with your current situation, be optimistic because it is optimism that makes us strong",
     "To the man who is always in my prayers I love you sincerely as it is",
@@ -93,5 +107,5 @@ global.galau = [
     "Only the patient can get through all the disappointments",
     "Getting back with you is the same as committing suicide and hurting my own feelings",
     "There's no need to retaliate by hurting so that Karma will take care of all that",
-    "I still remember you but my feelings don't hurt like before",
+    "I still remember you but my feelings don't hurt like before"
 ]
