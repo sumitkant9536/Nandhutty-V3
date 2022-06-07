@@ -12,7 +12,7 @@ handler.help = ['xnxxsearch <tittle>']
 handler.tags = ['nsfw']
 handler.command = /^(xnxxsearch)$/i
 
-handler.private = true
-handler.limit = 6
+handler.private = false
+handler.limit = 1
 
 module.exports = handler
