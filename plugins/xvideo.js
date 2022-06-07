@@ -1,6 +1,6 @@
 let fetch = require('node-fetch')
 let handler = async(m, { conn, text, command, usedPrefix }) => {
-    if (!text) throw `Harap masukan Judulnya \n\n\nContoh : .xvideosearch ngwe sama elaina`
+    if (!text) throw `Please enter the title \n\n\nExample : .xvideosearch you and elaina`
     let res = await fetch(`http://kocakz.herokuapp.com/api/media/xvideo/search?query=${text}`)
     if (!res.ok) throw await res.text()
     let json = await res.json()
@@ -8,8 +8,8 @@ let handler = async(m, { conn, text, command, usedPrefix }) => {
     if (json.status) m.reply(keqing)
     else throw json
 }
-handler.help = ['xvideosearch <judul>']
-handler.tags = ['dewasa']
+handler.help = ['xvideosearch <tittle>']
+handler.tags = ['nsfw']
 handler.command = /^(xvideosearch)$/i
 handler.private = false
 handler.limit = 1
