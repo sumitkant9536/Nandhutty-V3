@@ -22,7 +22,7 @@ const defaultMenu = {
 let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   let tags
   let teks = `${args[0]}`.toLowerCase()
-  let arrayMenu = ['all', 'game', 'xp', 'stiker', 'shellajaib', 'quotes', 'admin', 'grup', 'premium', 'internet', 'anonymous', 'nulis', 'downloader', 'tools', 'fun', 'database', 'textpro', 'audio', 'jadibot', 'info', 'nocategory', 'owner']
+  let arrayMenu = ['all', 'game', 'xp', 'stiker', 'shellajaib', 'quotes', 'admin', 'grup', 'premium', 'internet', 'anonymous', 'nulis', 'downloader', 'tools', 'fun', 'database', 'textpro', 'audio', 'jadibot', 'info', 'nocategory', 'nsfw', 'owner']
   if (!arrayMenu.includes(teks)) teks = '404'
   if (teks == 'all') tags = {
     'main': 'Main',
@@ -112,6 +112,9 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   }
   if (teks == 'nocategory') tags = {
     '': 'No Category'
+  }
+  if (teks == 'nsfw') tags = {
+     'nsfw': 'nsfw'
   }
   if (teks == 'owner') tags = {
     'owner': 'Owner',
@@ -270,9 +273,9 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                   "description": "",
                   "rowId": `${_p}? info`
                 }, {
-                  "title": "𝐓𝐚𝐧𝐩𝐚 𝐂𝐚𝐭𝐞𝐠𝐨𝐫𝐲",
+                  "title": "No Category",
                   "description": "",
-                  "rowId": `${_p}? tanpakategori`
+                  "rowId": `${_p}? nocategory`
                 }, {
                   "title": "𝐎𝐰𝐧𝐞𝐫",
                   "description": "",
