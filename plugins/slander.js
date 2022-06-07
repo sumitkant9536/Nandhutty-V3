@@ -20,6 +20,7 @@ let handler = async(m, { conn, text, usedPrefix, command }) => {
 handler.help = ['slander <text> @user <text>']
 handler.tags = ['tools']
 handler.command = /^(slander|fakereply)$/
+handler.premium = true
 
 module.exports = handler
 
