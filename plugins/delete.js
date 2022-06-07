@@ -6,7 +6,7 @@ let handler = function(m) {
   if (!isBaileys) throw 'The message was not sent by a bot!'
   this.deleteMessage(chat, {
     fromMe,
-    en,
+    id,
     remoteJid: chat
   })
 }
