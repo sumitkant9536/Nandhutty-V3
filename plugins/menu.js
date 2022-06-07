@@ -9,7 +9,7 @@ const defaultMenu = {
   〔 ɴᴀɴᴅʜᴜᴛᴛʏ ᴠ3 〕
 ➪Hai, %name!
 ➪Uptime: *%uptime (%muptime)*
-➪Developer:ᴀᴊᴍᴀʟ ᴀɴᴅ ᴀᴄʜᴜ
+➪Developer:ꜱɪʀɪᴜꜱ
 %readmore`.trimStart(),
   header: '*[ %category ]*',
   body: '✰ %cmd %islimit %isPremium',
@@ -22,7 +22,7 @@ const defaultMenu = {
 let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   let tags
   let teks = `${args[0]}`.toLowerCase()
-  let arrayMenu = ['all', 'game', 'xp', 'stiker', 'shellajaib', 'quotes', 'admin', 'grup', 'premium', 'internet', 'anonymous', 'nulis', 'downloader', 'tools', 'fun', 'database', 'textpro', 'audio', 'jadibot', 'info', 'tanpakategori', 'owner']
+  let arrayMenu = ['all', 'game', 'xp', 'stiker', 'shellajaib', 'quotes', 'admin', 'grup', 'premium', 'internet', 'anonymous', 'nulis', 'downloader', 'tools', 'fun', 'database', 'textpro', 'audio', 'jadibot', 'info', nocategory', 'owner']
   if (!arrayMenu.includes(teks)) teks = '404'
   if (teks == 'all') tags = {
     'main': 'Main',
@@ -47,7 +47,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
     'audio': 'Pengubah Suara',
     'jadibot': 'Jadi Bot',
     'info': 'Info',
-    '': 'Tanpa Kategori',
+    '': 'No Category',
   }
   if (teks == 'game') tags = {
     'game': 'Game'
@@ -110,8 +110,8 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   if (teks == 'info') tags = {
     'info': 'Info'
   }
-  if (teks == 'tanpakategori') tags = {
-    '': 'Tanpa Kategori'
+  if (teks == 'nocategory') tags = {
+    '': 'No Category'
   }
   if (teks == 'owner') tags = {
     'owner': 'Owner',
@@ -277,7 +277,11 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                   "title": "𝐎𝐰𝐧𝐞𝐫",
                   "description": "",
                   "rowId": `${_p}? owner`
-                }
+                }, {
+                  "title": "NSFW",
+                  "description": "",
+                  "rowId": `${_p}? nsfw`
+               }
               ]
             }
           ], "contextInfo": {
