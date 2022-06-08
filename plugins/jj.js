@@ -4,7 +4,7 @@ let handler = async (m, { conn, command }) => {
   if (!res.ok) throw 'Error Website server down'
   let json = await res.json()
   if (!json.video) throw 'Error!'
-   conn.sendFile(m.chat, json.video, 'meme.mp4', `Global Random`, m)
+   conn.sendFile(m.chat, json.video, 'meme.mp4', `© ꜱɪʀɪᴜꜱ`, m)
 }
 handler.help = ['jjfreefire', 'jjml', 'jjpubg', 'jjanime']
 handler.tags = ['fun']
