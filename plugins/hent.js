@@ -13,5 +13,6 @@ handler.command = /^(ass|bdsm|blowjob|boobjob|cum|creampie|cuckold|ero|elves|fem
 
 handler.premium = false
 handler.register = true
+handler.nsfw = true
 
 module.exports = handler
